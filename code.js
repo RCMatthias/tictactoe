@@ -20,36 +20,37 @@ const gameBoard = (function(doc) {
     for (let i = 0; i < rows ; i++){
         board[i] = []; //Create subArray
         for (let j = 0; j < columns; j++){
-        board[i].push(j)
+        board[i].push(Cell());
     }}
     
     const getBoard = () => board; 
 
-    console.log(board)
-   
-   /*  const writeToDOM = (selector, message) => {
-        if(!!doc && "querySelector" in doc){
-        document.querySelector(selector).innerHTML = message;
-        }
+    //Change the value of the selected column & row coords 
+    const placeToken = (column,row, player) => {
+        board[row][column].addToken(player);
+        console.log(board[row][column])
+        //filter to see if the cell already has a value of P1 or P2; else return (invalid move)
     }
- */
 
-
-
+    const printBoard = () => {
+        const boardWithCellValues = board.map((row) => row.map((cell) => cell.getValue()))
+    console.table(boardWithCellValues);
+};
 
 //RETURNS functions to use outside 
     return {
-        getBoard,
-/*         writeToDOM,
- */       
+        getBoard, 
+        placeToken, 
+        printBoard
     }
 
 })(document);
+gameBoard.placeToken(0, 0, "value")
 
-//MAKE GETVALUE func to use below 
-
-
+/* console.log(placeToken("1", "XX" ));
+ */console.log()
 //displayController
+
 const displayController = (function() {
     const gameBoardDiv = document.getElementById("gameBoardDiv");
     console.log(gameBoardDiv);
@@ -82,6 +83,24 @@ const displayController = (function() {
     }
 )()
 
+//Cell is one square on the board
+
+function Cell(){
+    let value = 0; 
+    const addToken = (player) => {
+        value = player;
+        console.log(gameBoard.getBoard())
+    };
+    const getValue =() => value; 
+
+    return {
+        addToken,
+        getValue
+    };
+}
+
+
+
 //Game flow  (the rules; all abstract!)
 const gameFlow = (function(doc) {
 
@@ -101,7 +120,6 @@ const gameFlow = (function(doc) {
 
 })(document);
 
-
 //Player turn functionality
 const playerTurn = (function () {
     const cell = document.querySelectorAll('.cell');
@@ -110,9 +128,12 @@ const playerTurn = (function () {
             //X player move if conditions are met 
             if(playerOne.turn == true && gameBoard.winner == null && e.target.textContent == ""){
             //add move to array
-//look for the content of the cell 
-//OR listen for clicks on the cell to change array? 
-
+            let boardCol = e.target.dataset.column;
+            let boardRow = e.target.dataset.row;
+            let board = gameBoard.getBoard();
+            let coord = board[boardCol, boardRow]
+            console.log (boardCol, boardRow)
+            
             //add move to screen
             cell.textContent = playerOne.icon;
 
