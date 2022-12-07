@@ -1,17 +1,17 @@
 //player factory
 
-const Player = (name, score) => {
-    const getScore = () => score;
-    const getName = () => name;
+const Player = (name, icon, ai, turn) => {
+    return {name, icon, ai, turn};
+};
 
-    
-    return {name, score, sayHello};
-}
+const playerOne =  Player("joske", "X", false, true)
+const playerTwo =  Player("grietje", "O", false, false);
+
 
 //Game Board
 
 const gameBoard = (function(doc) {
-    const rows = 3; 
+    const rows = 3 ;
     const columns = 3;
     const board = [];
 
@@ -57,7 +57,6 @@ const displayController = (function() {
         //display player turn
 
         //render board squares 
-
             //for each array item create a grid unit; 
             board.forEach(row => {
                 row.forEach((cell, index) => {
@@ -82,6 +81,33 @@ const gameFlow = (function(doc) {
     return
 })(document);
 
+
+//Player turn functionality
+const playerTurn = (function () {
+    const cell = document.querySelectorAll('.cell');
+    cell.forEach(cell=>{
+        cell.addEventListener('click', e=> {
+            //X player move if conditions are met 
+            if(playerOne.turn == true && gameBoard.winner == null && e.target.textContent == ""){
+            //add move to array
+            cell.textContent = playerOne.icon;
+            //set player turns
+            playerOne.turn = false; 
+            playerTwo.turn = true; 
+            console.log(board);
+        }else if(playerTwo.turn == true && gameBoard.winner == null && e.target.textContent ==""){
+            cell.textContent = playerTwo.icon;
+            //set player turns
+            playerOne.turn = true; 
+            playerTwo.turn = false; 
+            console.log(board);
+        }
+        })
+        }
+    )
+    
+    return {cell}
+    })();
 
 
 /*
