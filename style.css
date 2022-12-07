@@ -1,4 +1,51 @@
+html{
+    background-color: rgb(20, 20, 20);
+}
+
+.header{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    z-index: -1000;
+}
+
 
 .cell{
-    background-color: rgb(20,20,20);
+    width: 5rem;
+    height: 5rem;
+    border-radius: 20%;
+    background: #ff8f8f;
+    box-shadow:  20px 20px 60px #d97a7a,
+                  -20px -20px 60px #ffa4a4;
+    
+}
+.gameDiv {
+    display: flex; 
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+/*     grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; */
+}
+.gameBoardDiv{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 20px; 
+    align-items: center;
+    align-content: center;
+  /*  width: 100%;
+   height: 0%; */
+    margin: 25% 25% 25% 25%;
+   padding: 25% 25% 25% 25%;
+   background: rgb(161, 41, 41);
+
+   border-radius: 50px;
+   background: #d1d1d1;
+   box-shadow:  20px 20px 60px #b2b2b2,
+                -20px -20px 60px #f0f0f0;
+}
+
+
+
+[data-column]{
+
 }
