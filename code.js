@@ -14,36 +14,36 @@ const gameBoard = (function(doc) {
     const rows = 3; 
     const columns = 3;
 
-    let board = [];
+    const board = [];
 
 
     for (let i = 0; i < rows ; i++){
-        board [i] = []; //Create subArray
+        board[i] = []; //Create subArray
         for (let j = 0; j < columns; j++){
         board[i].push(j)
     }}
     
     const getBoard = () => board; 
-    console.log(board)
-   
+
+/*     console.log(board)
+ */   
     const writeToDOM = (selector, message) => {
         if(!!doc && "querySelector" in doc){
         document.querySelector(selector).innerHTML = message;
         }
     }
     return {
+        board,
         getBoard,
         writeToDOM,
     }
 })(document);
-
-console.table(gameBoard.getBoard)
+const board = gameBoard.getBoard()
 gameBoard.writeToDOM("#target", "eyaoyao");
 
 //displayController
 const displayController = (function(doc) {
-    let board = gameBoard.getBoard
-    console.log(board)
+    console.table(board)
     let gameBoardDiv = document.getElementById("gameBoardDiv")
     console.log(gameBoardDiv)
     const createGrid = () => {
@@ -57,8 +57,10 @@ const displayController = (function(doc) {
         //assign the correct coordinates to each part of the newly generated grid
 
     }
+return{ 
+    createGrid,
 
-
+}
 })(document)
 
 //Game flow 
