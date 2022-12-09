@@ -43,18 +43,20 @@ const TicTacToe = (player1Name, player2Name) => {
 
 const game = TicTacToe("Margaret", "Bartholomeus");
 game.board.at(0).value=game.currentPlayer.icon;
-console.log(game.board.value);
 
 
 //THE VIEWER (observers eventlisteners)
     //create the square divs when the game is run (listen to the game controller?)
 const screenController = (() => {
-    const board = game.board.at[i] 
-    const square = document.createElement("div");
-     square.classList.add("squareDiv")
-     
-     game.board.forEach(element => {
-        const square = document.createElement("div");
+    const board = game.board.value;
+    console.log(board)
+    const gameBoardDiv = document.querySelector('.gameBoardDiv');
+
+     board.forEach(element => {
+        const cell = document.createElement("div");
+        gameBoardDiv.appendChild(cell)
+        cell.classList.add("cell")
+        console.log(    game.board.at[element])
     });
      return {
 
