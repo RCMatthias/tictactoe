@@ -12,9 +12,12 @@ text-shadow: 4px 3px 0 #7A7A7A;
     width: 5rem;
     height: 5rem;
     border-radius: 20%;
+    text-align: center;
+    font: 1.2em bold "Fira Sans", serif bold;
     background: #ff8f8f;
     box-shadow:  20px 20px 60px #d97a7a,
                   -20px -20px 60px #ffa4a4;
+                  
     
 }
 
