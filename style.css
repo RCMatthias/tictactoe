@@ -12,9 +12,12 @@ text-shadow: 4px 3px 0 #7A7A7A;
     width: 5rem;
     height: 5rem;
     border-radius: 20%;
+    text-align: center;
+    font: 1.2em bold "Fira Sans", serif bold;
     background: #ff8f8f;
     box-shadow:  20px 20px 60px #d97a7a,
                   -20px -20px 60px #ffa4a4;
+                  
     
 }
 
@@ -73,7 +76,38 @@ text-shadow: 4px 3px 0 #7A7A7A;
                 -20px -20px 60px #f0f0f0;
 }
 
+.winnerDiv{
+    border: ;
+}
 
+.winnerDiv{
+    padding: 2em 2em 2em 2em;
+    text-shadow: 5px 5px #558ABB;
+        font-size: x-large;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color:#330909;
+    --borderWidth: 3px;
+    background: #b1b1b1;
+
+    position: relative;
+    border-radius: var(--borderWidth);
+    
+  }
+  .winnerDiv:after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    border-radius: calc(2 * var(--borderWidth));
+    z-index: -1;
+    background-size: 300% 300%;
+  }
+  
+
+  
 
 [data-column]{
 
